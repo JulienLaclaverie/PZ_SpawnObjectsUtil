@@ -1,0 +1,6 @@
+name=Spawn Map-Objects Utility
+id=SpawnMapObjectsUtil
+poster=poster.png
+description=Allow maps to feature more control over spawning features such as campfires, compost bins, thumpable structures or even zombies.
+pack=placeholders
+tiledef=placeholders 2990
