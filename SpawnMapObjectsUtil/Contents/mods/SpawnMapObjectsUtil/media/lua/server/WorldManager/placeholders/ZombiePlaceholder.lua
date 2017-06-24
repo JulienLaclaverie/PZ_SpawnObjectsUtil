@@ -91,7 +91,6 @@ ZombiePlaceholder.replace = function(square, tileObject)
         local coords = { x = square:getX(), y = square:getY(), z = square:getZ() };
         spawnHorde(coords.x, coords.y, coords.x, coords.y, coords.z, ZombiePlaceholder.zombiesToSpawn);
         -- Remove the placeholder
-        square:transmitRemoveItemFromSquare(tileObject);
-        square:RemoveTileObject(tileObject);
+        SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
     end
 end

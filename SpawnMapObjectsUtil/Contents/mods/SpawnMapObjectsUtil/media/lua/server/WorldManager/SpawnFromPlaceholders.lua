@@ -15,4 +15,9 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
 
 end
 
+SpawnFromPlaceholder.removePlaceholderFromSquare = function(square, tileObject)
+    square:transmitRemoveItemFromSquare(tileObject);
+    square:RemoveTileObject(tileObject);
+end
+
 Events.LoadGridsquare.Add(SpawnFromPlaceholder.onGridsquareLoaded);
