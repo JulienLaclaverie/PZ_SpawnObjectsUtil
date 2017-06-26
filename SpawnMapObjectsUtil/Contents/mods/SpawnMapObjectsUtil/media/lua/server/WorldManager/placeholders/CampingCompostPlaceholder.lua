@@ -46,6 +46,18 @@ CampingCompostPlaceholder.replace = function(square, tileObject)
         SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
     end
 
+    -- Place a camping tent (South)
+    if tileObject:getSprite():getName() == CampingCompostPlaceholder.campingTentSouth then
+        SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
+        camping.addTent(square, "camping_01_0");
+    end
+
+    -- Place a camping tent (East)
+    if tileObject:getSprite():getName() == CampingCompostPlaceholder.campingTentEast then
+        SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
+        camping.addTent(square, "camping_01_3");
+    end
+
     -- Place a Metal drum
     -- FIXME: this is not working for now
     --[[if tileObject:getSprite():getName() == "location_community_park_01_18" then
