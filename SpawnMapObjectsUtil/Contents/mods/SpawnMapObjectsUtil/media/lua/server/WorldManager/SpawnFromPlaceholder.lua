@@ -8,6 +8,7 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
             if tileObject then
                 ZombiePlaceholder.replace(sq, tileObject);
                 CampingCompostPlaceholder.replace(sq, tileObject);
+                --DroppedFoodItemsPlaceholder.replace(sq, tileObject);
             end
         end
     end
