@@ -6,8 +6,9 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
         if sq:getObjects() then
             local tileObject = sq:getObjects():get(i);
             if tileObject then
-                ZombiePlaceholder.replace(sq, tileObject);
                 CampingCompostPlaceholder.replace(sq, tileObject);
+                -- CarpentryPlaceholder.replace(sq, tileObject);
+                ZombiePlaceholder.replace(sq, tileObject);
             end
         end
     end
