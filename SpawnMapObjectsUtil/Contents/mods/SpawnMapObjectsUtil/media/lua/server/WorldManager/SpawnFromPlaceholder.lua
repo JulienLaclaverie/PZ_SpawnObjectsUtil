@@ -1,21 +1,32 @@
-SpawnFromPlaceholder = {};
+SpawnFromPlaceholder = {
+
+    placeholders = {
+        { name = "ZombiePlaceholder", indexModifier = -1 },
+        { name = "CampingCompostPlaceholder", indexModifier = 0 },
+        -- { fn = CarpentryPlaceholder, indexModifier = 0 },
+        { name = "DroppedFoodItemsPlaceholder", indexModifier = -1 },
+        { name = "DroppedTrashItemsPlaceholder", indexModifier = -1 },
+        { name = "DroppedWeaponsItemsPlaceholder", indexModifier = -1 }
+    }
+
+};
 
 SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
 
     for i=0,sq:getObjects():size()-1 do
         if sq:getObjects() then
             local tileObject = sq:getObjects():get(i);
-            local isOnlyRemoved = false;
             if tileObject then
-                ZombiePlaceholder.replace(sq, tileObject);
-                CampingCompostPlaceholder.replace(sq, tileObject);
-                -- CarpentryPlaceholder.replace(sq, tileObject);
-                isOnlyRemoved = DroppedFoodItemsPlaceholder.replace(sq, tileObject);
-                isOnlyRemoved = DroppedTrashItemsPlaceholder.replace(sq, tileObject);
-                isOnlyRemoved = DroppedWeaponsItemsPlaceholder.replace(sq, tileObject);
-                if (isOnlyRemoved == true) then
-                    i = i-1;
-                    isOnlyRemoved = false;
+                for key,ph in ipairs(SpawnFromPlaceholder.placeholders) do
+                    if ph.name ~= nil then
+                        if ph.fn == nil then
+                            ph.fn = _G[ph.name];
+                        end
+                        local isOnlyRemoved = ph.fn.replace(sq, tileObject);
+                        if isOnlyRemoved == true then
+                            i = i + ph.indexModifier;
+                        end
+                    end
                 end
             end
         end
@@ -26,6 +37,10 @@ end
 SpawnFromPlaceholder.removePlaceholderFromSquare = function(square, tileObject)
     square:transmitRemoveItemFromSquare(tileObject);
     square:RemoveTileObject(tileObject);
+end
+
+SpawnFromPlaceholder.Add = function(placeholder)
+    table.insert(SpawnFromPlaceholder.placeholders, placeholder);
 end
 
 Events.LoadGridsquare.Add(SpawnFromPlaceholder.onGridsquareLoaded);
