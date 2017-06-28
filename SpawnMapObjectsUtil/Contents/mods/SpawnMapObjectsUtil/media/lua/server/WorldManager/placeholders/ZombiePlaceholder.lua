@@ -87,10 +87,19 @@ ZombiePlaceholder.match = function(tileObject)
 end
 
 ZombiePlaceholder.replace = function(square, tileObject)
+
+    local isUsed = false;
     if ZombiePlaceholder.match(tileObject) then
         local coords = { x = square:getX(), y = square:getY(), z = square:getZ() };
         spawnHorde(coords.x, coords.y, coords.x, coords.y, coords.z, ZombiePlaceholder.zombiesToSpawn);
-        -- Remove the placeholder
-        SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
+        isUsed = true;
     end
+
+    if (isUsed == true) then
+        SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
+        return true;
+    else
+        return false;
+    end
+    
 end

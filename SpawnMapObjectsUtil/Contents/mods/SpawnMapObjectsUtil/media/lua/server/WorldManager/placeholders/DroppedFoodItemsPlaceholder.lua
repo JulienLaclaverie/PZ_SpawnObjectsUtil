@@ -37,7 +37,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
     local randomValue_3_5 = ZombRand(3,5)+1;
     local randomValue_1_3 = ZombRand(1,3)+1;
     local randomValue_6_8 = ZombRand(6,8)+1;
-    local isRemoved = false;
+    local isUsed = false;
 
     -- Alcohol
     if tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.alcohol_1 then
@@ -47,7 +47,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         else
             square:AddWorldInventoryItem("Base.Wine2", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.alcohol_2 then
 
@@ -57,14 +57,14 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
             square:AddWorldInventoryItem("Base.Wine2", 0, 0, 0);
         end
         square:AddWorldInventoryItem("Base.WhiskeyFull", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.alcohol_3 then
 
         square:AddWorldInventoryItem("Base.Wine", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Wine2", 0, 0, 0);
         square:AddWorldInventoryItem("Base.WhiskeyFull", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.alcohol_3_5 then
         
@@ -83,7 +83,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_3_5 > 4) then
             square:AddWorldInventoryItem("Base.WhiskeyFull", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     end
 
@@ -105,7 +105,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_3_5 > 4) then
             square:AddWorldInventoryItem("Base.Chocolate", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.cake_6_8 then
 
@@ -123,7 +123,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_6_8 >= 8) then
             square:AddWorldInventoryItem("Base.CakeSlice", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.cookie_jelly_3_5 then
 
@@ -138,7 +138,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_3_5 > 4) then
             square:AddWorldInventoryItem("Base.CookieJelly", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.cupcake_1_3 then
 
@@ -149,7 +149,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_1_3 > 2) then
             square:AddWorldInventoryItem("Base.Cupcake", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     end
 
@@ -157,20 +157,20 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
     if tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.bleach_1 then
         
         square:AddWorldInventoryItem("Base.Bleach", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.bleach_2 then
         
         square:AddWorldInventoryItem("Base.Bleach", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Bleach", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.bleach_3 then
         
         square:AddWorldInventoryItem("Base.Bleach", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Bleach", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Bleach", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     end
 
@@ -178,7 +178,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
     if tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.pop_1 then
 
         square:AddWorldInventoryItem("Base.Pop", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.bottle_1 then
 
@@ -187,21 +187,21 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         else
             square:AddWorldInventoryItem("Base.WaterBottleFull", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.pop_3 then
 
         square:AddWorldInventoryItem("Base.Pop", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Pop2", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Pop3", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.pop_1_bottle_2 then
 
         square:AddWorldInventoryItem("Base.Pop2", 0, 0, 0);
         square:AddWorldInventoryItem("Base.WaterPopBottle", 0, 0, 0);
         square:AddWorldInventoryItem("Base.WaterBottleFull", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.pop_2_bottle_4 then
 
@@ -211,14 +211,14 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         square:AddWorldInventoryItem("Base.WaterPopBottle", 0, 0, 0);
         square:AddWorldInventoryItem("Base.WaterBottleFull", 0, 0, 0);
         square:AddWorldInventoryItem("Base.WaterBottleFull", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.chips_1_pop_2 then
 
         square:AddWorldInventoryItem("Base.Pop", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Pop3", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Crisps3", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     end
 
@@ -236,7 +236,7 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_3_5 > 4) then
             DroppedFoodItemsPlaceholder.generateConvinience(randomContent, square);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.convinience_1_3 then
 
@@ -247,41 +247,41 @@ DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
         if (randomValue_1_3 > 2) then
             DroppedFoodItemsPlaceholder.generateConvinience(randomContent, square);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.convinience_2_chips_2 then
 
         DroppedFoodItemsPlaceholder.generateConvinience(randomContent, square);
         square:AddWorldInventoryItem("Base.Crisps3", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Crisps4", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.convinience_1 then
 
         DroppedFoodItemsPlaceholder.generateConvinience(randomContent, square);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.chips_3 then
 
         square:AddWorldInventoryItem("Base.Crisps", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Crisps2", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Crisps3", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.chips_2 then
 
         square:AddWorldInventoryItem("Base.Crisps3", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Crisps", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedFoodItemsPlaceholder.chips_1 then
 
         square:AddWorldInventoryItem("Base.Crisps4", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     end
 
-    if (isRemoved == true) then
+    if (isUsed == true) then
         SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
         return true;
     else
@@ -301,6 +301,6 @@ DroppedFoodItemsPlaceholder.generateConvinience = function(randomContent, square
     elseif (randomContent >= 20) then
         square:AddWorldInventoryItem("Base.TVDinner", 0, 0, 0);
     end
-    isRemoved = true;
+    isUsed = true;
 
 end

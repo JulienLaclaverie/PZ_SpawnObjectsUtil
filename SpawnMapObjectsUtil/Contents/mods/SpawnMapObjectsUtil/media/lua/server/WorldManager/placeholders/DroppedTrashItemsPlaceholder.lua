@@ -14,12 +14,12 @@ DroppedTrashItemsPlaceholder = {
 DroppedTrashItemsPlaceholder.replace = function(square, tileObject)
 
     local randomContent = ZombRand(0,100)+1;
-    local isRemoved = false;
+    local isUsed = false;
 
     if tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.newspaper_1 then
 
         square:AddWorldInventoryItem("Base.Newspaper", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.paper_sheet_1_2 then
 
@@ -28,44 +28,44 @@ DroppedTrashItemsPlaceholder.replace = function(square, tileObject)
         if (randomContent >= 50) then
             square:AddWorldInventoryItem("Base.SheetPaper", 0, 0, 0);
         end
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.book_1 then
 
         square:AddWorldInventoryItem("Base.Book", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.magasine_1 then
 
         square:AddWorldInventoryItem("Base.Magazine", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.journal_1 then
 
         square:AddWorldInventoryItem("Base.Notebook", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_1 then
 
         square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_2 then
 
         square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_3 then
 
         square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
         square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        isRemoved = true;
+        isUsed = true;
 
     end
 
-    if (isRemoved == true) then
+    if (isUsed == true) then
         SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
         return true;
     else
