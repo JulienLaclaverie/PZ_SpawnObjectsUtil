@@ -24,6 +24,7 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
                         end
                         local isOnlyRemoved = ph.fn.replace(sq, tileObject);
                         if isOnlyRemoved == true then
+                            SpawnFromPlaceholder.removePlaceholderFromSquare(sq, tileObject);
                             i = i + ph.indexModifier;
                         end
                     end

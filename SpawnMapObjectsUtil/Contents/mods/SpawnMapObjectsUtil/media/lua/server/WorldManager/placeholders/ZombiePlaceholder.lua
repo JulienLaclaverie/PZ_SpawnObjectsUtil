@@ -95,11 +95,5 @@ ZombiePlaceholder.replace = function(square, tileObject)
         isUsed = true;
     end
 
-    if (isUsed == true) then
-        SpawnFromPlaceholder.removePlaceholderFromSquare(square, tileObject);
-        return true;
-    else
-        return false;
-    end
-    
+    return isUsed;
 end
