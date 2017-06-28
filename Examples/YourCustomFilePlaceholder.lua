@@ -26,7 +26,7 @@ YourCustomFilePlaceholder.replace = function(square, tileObject)
 
 end
 
-table.insert(SpawnFromPlaceholder.placeholders, { name = "YourCustomFilePlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "YourCustomFilePlaceholder", indexModifier = 0 });
 -- [ Important note concerning indexModifier ]
 -- indexModifier value depends on how much you have changed the number of items of the squere
 -- If you just replaced the pleholder by an other object the value you need to set is 0.
