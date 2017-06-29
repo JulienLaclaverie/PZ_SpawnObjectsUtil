@@ -5,7 +5,7 @@
 --           Time: 07:17                        
 -- ================================================
 
-CarpentryBarricadePlaceholder = {
+BarricadePlaceholder = {
 
     -- Wooden barricades
     singleBarricadeExterior =       {right="placeholder_carpentry_01_0", left="placeholder_carpentry_01_1", amount=1},
@@ -29,103 +29,103 @@ CarpentryBarricadePlaceholder = {
 
 };
 
-CarpentryBarricadePlaceholder.matchBarricade = function(sprite)
+BarricadePlaceholder.matchBarricade = function(sprite)
     local output = { barricade = nil, isRight = false, isBehind = false, isMetal = false, isMetalBar = false };
 
     -- Wooden Barricades
     if luautils.stringStarts(sprite, "placeholder_carpentry_01") then
-        if sprite == CarpentryBarricadePlaceholder.singleBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.singleBarricadeExterior;
+        if sprite == BarricadePlaceholder.singleBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.singleBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.singleBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.singleBarricadeExterior;
+        if sprite == BarricadePlaceholder.singleBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.singleBarricadeExterior;
             output.isRight = false;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.doubleBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.doubleBarricadeExterior;
+        if sprite == BarricadePlaceholder.doubleBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.doubleBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.doubleBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.doubleBarricadeExterior;
+        if sprite == BarricadePlaceholder.doubleBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.doubleBarricadeExterior;
             output.isRight = false;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.tripleBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.tripleBarricadeExterior;
+        if sprite == BarricadePlaceholder.tripleBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.tripleBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.tripleBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.tripleBarricadeExterior;
+        if sprite == BarricadePlaceholder.tripleBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.tripleBarricadeExterior;
             output.isRight = false;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.quadrupleBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.quadrupleBarricadeExterior;
+        if sprite == BarricadePlaceholder.quadrupleBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.quadrupleBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.quadrupleBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.quadrupleBarricadeExterior;
+        if sprite == BarricadePlaceholder.quadrupleBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.quadrupleBarricadeExterior;
             output.isRight = false;
             output.isBehind = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.singleBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.singleBarricadeInterior;
+        if sprite == BarricadePlaceholder.singleBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.singleBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.singleBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.singleBarricadeInterior;
+        if sprite == BarricadePlaceholder.singleBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.singleBarricadeInterior;
             output.isRight = false;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.doubleBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.doubleBarricadeInterior;
+        if sprite == BarricadePlaceholder.doubleBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.doubleBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.doubleBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.doubleBarricadeInterior;
+        if sprite == BarricadePlaceholder.doubleBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.doubleBarricadeInterior;
             output.isRight = false;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.tripleBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.tripleBarricadeInterior;
+        if sprite == BarricadePlaceholder.tripleBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.tripleBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.tripleBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.tripleBarricadeInterior;
+        if sprite == BarricadePlaceholder.tripleBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.tripleBarricadeInterior;
             output.isRight = false;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.quadrupleBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.quadrupleBarricadeInterior;
+        if sprite == BarricadePlaceholder.quadrupleBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.quadrupleBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.quadrupleBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.quadrupleBarricadeInterior;
+        if sprite == BarricadePlaceholder.quadrupleBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.quadrupleBarricadeInterior;
             output.isRight = false;
             output.isBehind = false;
         end
@@ -134,86 +134,86 @@ CarpentryBarricadePlaceholder.matchBarricade = function(sprite)
     -- Metal Sheet & Metal Bar Barricades
     if luautils.stringStarts(sprite, "placeholder_constructedobjects_01") then
         -- Metal Sheet
-        if sprite == CarpentryBarricadePlaceholder.healthyMetalBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.healthyMetalBarricadeInterior;
+        if sprite == BarricadePlaceholder.healthyMetalBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.healthyMetalBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.healthyMetalBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.healthyMetalBarricadeInterior;
+        if sprite == BarricadePlaceholder.healthyMetalBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.healthyMetalBarricadeInterior;
             output.isRight = false;
             output.isBehind = false;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.damagedMetalBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.damagedMetalBarricadeInterior;
+        if sprite == BarricadePlaceholder.damagedMetalBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.damagedMetalBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.damagedMetalBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.damagedMetalBarricadeInterior;
+        if sprite == BarricadePlaceholder.damagedMetalBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.damagedMetalBarricadeInterior;
             output.isRight = false;
             output.isBehind = false;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.healthyMetalBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.healthyMetalBarricadeExterior;
+        if sprite == BarricadePlaceholder.healthyMetalBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.healthyMetalBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.healthyMetalBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.healthyMetalBarricadeExterior;
+        if sprite == BarricadePlaceholder.healthyMetalBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.healthyMetalBarricadeExterior;
             output.isRight = false;
             output.isBehind = true;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.damagedMetalBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.damagedMetalBarricadeExterior;
+        if sprite == BarricadePlaceholder.damagedMetalBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.damagedMetalBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
             output.isMetal = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.damagedMetalBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.damagedMetalBarricadeExterior;
+        if sprite == BarricadePlaceholder.damagedMetalBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.damagedMetalBarricadeExterior;
             output.isRight = false;
             output.isBehind = true;
             output.isMetal = true;
         end
 
         -- Metal Bar
-        if sprite == CarpentryBarricadePlaceholder.metalBarBarricadeInterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.metalBarBarricadeInterior;
+        if sprite == BarricadePlaceholder.metalBarBarricadeInterior.right then
+            output.barricade = BarricadePlaceholder.metalBarBarricadeInterior;
             output.isRight = true;
             output.isBehind = false;
             output.isMetalBar = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.metalBarBarricadeInterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.metalBarBarricadeInterior;
+        if sprite == BarricadePlaceholder.metalBarBarricadeInterior.left then
+            output.barricade = BarricadePlaceholder.metalBarBarricadeInterior;
             output.isRight = false;
             output.isBehind = true;
             output.isMetalBar = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.metalBarBarricadeExterior.right then
-            output.barricade = CarpentryBarricadePlaceholder.metalBarBarricadeExterior;
+        if sprite == BarricadePlaceholder.metalBarBarricadeExterior.right then
+            output.barricade = BarricadePlaceholder.metalBarBarricadeExterior;
             output.isRight = true;
             output.isBehind = true;
             output.isMetalBar = true;
         end
 
-        if sprite == CarpentryBarricadePlaceholder.metalBarBarricadeExterior.left then
-            output.barricade = CarpentryBarricadePlaceholder.metalBarBarricadeExterior;
+        if sprite == BarricadePlaceholder.metalBarBarricadeExterior.left then
+            output.barricade = BarricadePlaceholder.metalBarBarricadeExterior;
             output.isRight = false;
             output.isBehind = false;
             output.isMetalBar = true;
@@ -222,14 +222,14 @@ CarpentryBarricadePlaceholder.matchBarricade = function(sprite)
     return output;
 end
 
-CarpentryBarricadePlaceholder.replace = function(square, tileObject)
+BarricadePlaceholder.replace = function(square, tileObject)
     local isUsed = false;
     if tileObject:getSprite():getName() then
-        local args = CarpentryBarricadePlaceholder.matchBarricade(tileObject:getSprite():getName());
+        local args = BarricadePlaceholder.matchBarricade(tileObject:getSprite():getName());
         if args.barricade ~= nil then
-            local barricable = CarpentryBarricadePlaceholder.getBarricadeAble(square, args);
+            local barricable = BarricadePlaceholder.getBarricadeAble(square, args);
             if barricable ~= nil then
-                CarpentryBarricadePlaceholder.placeBarricade(barricable, args);
+                BarricadePlaceholder.placeBarricade(barricable, args);
                 isUsed = true;
             end
         end
@@ -237,7 +237,7 @@ CarpentryBarricadePlaceholder.replace = function(square, tileObject)
     return isUsed
 end
 
-CarpentryBarricadePlaceholder.getBarricadeAble = function(square, data)
+BarricadePlaceholder.getBarricadeAble = function(square, data)
     local goodSquare = square;
     if data.isBehind then
         local x = square:getX();
@@ -262,7 +262,7 @@ CarpentryBarricadePlaceholder.getBarricadeAble = function(square, data)
     return nil
 end
 
-CarpentryBarricadePlaceholder.placeBarricade = function(object, args)
+BarricadePlaceholder.placeBarricade = function(object, args)
     local barricade = IsoBarricade.AddBarricadeToObject(object, args.isBehind);
 
     if barricade then
@@ -294,4 +294,4 @@ CarpentryBarricadePlaceholder.placeBarricade = function(object, args)
 end
 
 
-SpawnFromPlaceholder.Add({ name = "CarpentryBarricadePlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "BarricadePlaceholder", indexModifier = 0 });
