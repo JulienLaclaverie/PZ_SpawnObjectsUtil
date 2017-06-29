@@ -1,13 +1,6 @@
 SpawnFromPlaceholder = {
 
-    placeholders = {
-        { name = "ZombiePlaceholder", indexModifier = -1 },
-        { name = "CampingCompostPlaceholder", indexModifier = 0 },
-        { name = "CarpentryBarricadePlaceholder", indexModifier = 0 },
-        { name = "DroppedFoodItemsPlaceholder", indexModifier = -1 },
-        { name = "DroppedTrashItemsPlaceholder", indexModifier = -1 },
-        { name = "DroppedWeaponsItemsPlaceholder", indexModifier = -1 }
-    }
+    placeholders = {}
 
 };
 

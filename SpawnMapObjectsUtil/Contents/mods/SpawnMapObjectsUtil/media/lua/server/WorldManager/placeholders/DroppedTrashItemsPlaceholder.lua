@@ -67,3 +67,6 @@ DroppedTrashItemsPlaceholder.replace = function(square, tileObject)
 
     return isUsed;
 end
+
+
+SpawnFromPlaceholder.Add({ name = "DroppedTrashItemsPlaceholder", indexModifier = -1 });

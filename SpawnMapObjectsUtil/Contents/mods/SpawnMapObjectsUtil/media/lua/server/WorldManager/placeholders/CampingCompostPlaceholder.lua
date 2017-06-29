@@ -62,3 +62,6 @@ CampingCompostPlaceholder.replace = function(square, tileObject)
 
     return isUsed;
 end
+
+
+SpawnFromPlaceholder.Add({ name = "CampingCompostPlaceholder", indexModifier = 0 });

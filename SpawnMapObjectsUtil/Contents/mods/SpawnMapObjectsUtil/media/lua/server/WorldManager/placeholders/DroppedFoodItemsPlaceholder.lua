@@ -298,3 +298,6 @@ DroppedFoodItemsPlaceholder.generateConvinience = function(randomContent, square
     isUsed = true;
 
 end
+
+
+SpawnFromPlaceholder.Add({ name = "DroppedFoodItemsPlaceholder", indexModifier = -1 });

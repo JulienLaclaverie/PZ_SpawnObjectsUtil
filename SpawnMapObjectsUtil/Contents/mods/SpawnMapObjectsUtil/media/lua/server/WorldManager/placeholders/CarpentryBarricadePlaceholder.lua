@@ -179,3 +179,6 @@ CarpentryBarricadePlaceholder.placeBarricade = function(object, args)
     end
 
 end
+
+
+SpawnFromPlaceholder.Add({ name = "CarpentryBarricadePlaceholder", indexModifier = 0 });
