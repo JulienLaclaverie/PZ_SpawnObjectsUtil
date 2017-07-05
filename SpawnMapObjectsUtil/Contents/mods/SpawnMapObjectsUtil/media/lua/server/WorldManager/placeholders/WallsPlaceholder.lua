@@ -38,22 +38,107 @@ WallsPlaceholder = {
     wooden_door_frame_west_3 = "placeholder_walls_wooden_01_10",
     wooden_door_frame_north_3 = "placeholder_walls_wooden_01_11",
 
-    wooden_fence_west_1 = "placeholder_walls_wooden_01_40",
-    wooden_fence_north_1 = "placeholder_walls_wooden_01_41",
-    wooden_fence_corner_1 = "placeholder_walls_wooden_01_42",
-    wooden_fence_pillar_1 = "placeholder_walls_wooden_01_43",
+    wooden_fence_west_1 = "placeholder_carpentry_02_40",
+    wooden_fence_north_1 = "placeholder_carpentry_02_41",
+    wooden_fence_corner_1 = "placeholder_carpentry_02_42",
+    wooden_fence_pillar_1 = "placeholder_carpentry_02_43",
 
-    wooden_fence_west_2 = "placeholder_walls_wooden_01_44",
-    wooden_fence_north_2 = "placeholder_walls_wooden_01_45",
-    wooden_fence_corner_2 = "placeholder_walls_wooden_01_46",
-    wooden_fence_pillar_2 = "placeholder_walls_wooden_01_47",
+    wooden_fence_west_2 = "placeholder_carpentry_02_44",
+    wooden_fence_north_2 = "placeholder_carpentry_02_45",
+    wooden_fence_corner_2 = "placeholder_carpentry_02_46",
+    wooden_fence_pillar_2 = "placeholder_carpentry_02_47",
 
-    wooden_fence_west_3 = "placeholder_walls_wooden_01_48",
-    wooden_fence_north_3 = "placeholder_walls_wooden_01_49",
-    wooden_fence_corner_3 = "placeholder_walls_wooden_01_50",
-    wooden_fence_pillar_3 = "placeholder_walls_wooden_01_51",
+    wooden_fence_west_3 = "placeholder_carpentry_02_48",
+    wooden_fence_north_3 = "placeholder_carpentry_02_49",
+    wooden_fence_corner_3 = "placeholder_carpentry_02_50",
+    wooden_fence_pillar_3 = "placeholder_carpentry_02_51",
+
+    metal_frame_west = "placeholder_constructedobjects_01_68",
+    metal_frame_north = "placeholder_constructedobjects_01_69",
+    metal_frame_corner = "placeholder_constructedobjects_01_70",
+    metal_frame_pillar = "placeholder_constructedobjects_01_71",
+
+    metal_wall_west_1 = "placeholder_constructedobjects_01_64",
+    metal_wall_north_1 = "placeholder_constructedobjects_01_65",
+    metal_wall_corner_1 = "placeholder_constructedobjects_01_66",
+    metal_wall_pillar_1 = "placeholder_constructedobjects_01_67",
+    metal_window_frame_west_1 = "placeholder_constructedobjects_01_72",
+    metal_window_frame_north_1 = "placeholder_constructedobjects_01_73",
+    metal_door_frame_west_1 = "placeholder_constructedobjects_01_74",
+    metal_door_frame_north_1 = "placeholder_constructedobjects_01_75",
+
+    metal_wall_west_2 = "placeholder_constructedobjects_01_48",
+    metal_wall_north_2 = "placeholder_constructedobjects_01_49",
+    metal_wall_corner_2 = "placeholder_constructedobjects_01_50",
+    metal_wall_pillar_2 = "placeholder_constructedobjects_01_51",
+    metal_window_frame_west_2 = "placeholder_constructedobjects_01_56",
+    metal_window_frame_north_2 = "placeholder_constructedobjects_01_57",
+    metal_door_frame_west_2 = "placeholder_constructedobjects_01_58",
+    metal_door_frame_north_2 = "placeholder_constructedobjects_01_59",
 
 };
+
+WallsPlaceholder.InitializeWallTypes = function(player)
+
+	sprite = ISBuildMenu.getWoodenWallFrameSprites(player);
+	WallsPlaceholder.WoodenWallFrame = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
+    WallsPlaceholder.WoodenWallFrame.canBarricade = false;
+    WallsPlaceholder.WoodenWallFrame.name = "WoodenWallFrame";
+    WallsPlaceholder.WoodenWallFrame.modData["xp:Woodwork"] = 0;
+    WallsPlaceholder.WoodenWallFrame.modData["need:Base.Plank"] = "2";
+    WallsPlaceholder.WoodenWallFrame.modData["need:Base.Nails"] = "2";
+    WallsPlaceholder.WoodenWallFrame.health = 50;
+    WallsPlaceholder.WoodenWallFrame.player = player;
+
+    WallsPlaceholder.WoodenWallPillar = ISWoodenWall:new("walls_exterior_wooden_01_27", "walls_exterior_wooden_01_27", nil);
+	WallsPlaceholder.WoodenWallPillar.modData["need:Base.Plank"] = "2";
+	WallsPlaceholder.WoodenWallPillar.modData["need:Base.Nails"] = "3";
+    WallsPlaceholder.WoodenWallPillar.modData["xp:Woodwork"] = 0;
+	WallsPlaceholder.WoodenWallPillar.canPassThrough = true;
+	WallsPlaceholder.WoodenWallPillar.canBarricade = false;
+    WallsPlaceholder.WoodenWallPillar.player = player;
+    WallsPlaceholder.WoodenWallPillar.health = 55;
+    WallsPlaceholder.WoodenWallPillar.name = "Wooden Pillar";
+
+    WallsPlaceholder.WoodenLogWall = ISWoodenWall:new("carpentry_02_80", "carpentry_02_81", nil);
+    WallsPlaceholder.WoodenLogWall.modData["need:Base.Log"] = "4";
+    WallsPlaceholder.WoodenLogWall.modData["need:Base.Rope"] = "2";
+    WallsPlaceholder.WoodenLogWall.modData["xp:Woodwork"] = 0;
+    WallsPlaceholder.WoodenLogWall.player = player;
+	WallsPlaceholder.WoodenLogWall.noNeedHammer = true;
+	WallsPlaceholder.WoodenLogWall.canBarricade = false;
+    WallsPlaceholder.WoodenLogWall.health = 500;
+	WallsPlaceholder.WoodenLogWall.name = "Log Wall";
+
+    WallsPlaceholder.WoodenLogPillar = ISWoodenWall:new("carpentry_02_83", "carpentry_02_83", nil);
+    WallsPlaceholder.WoodenLogPillar.modData["need:Base.Log"] = "4";
+    WallsPlaceholder.WoodenLogPillar.modData["need:Base.Rope"] = "2";
+    WallsPlaceholder.WoodenLogPillar.modData["xp:Woodwork"] = 0;
+	WallsPlaceholder.WoodenLogPillar.canPassThrough = true;
+    WallsPlaceholder.WoodenLogPillar.player = player;
+	WallsPlaceholder.WoodenLogPillar.noNeedHammer = true;
+	WallsPlaceholder.WoodenLogPillar.canBarricade = false;
+    WallsPlaceholder.WoodenLogPillar.health = 500;
+	WallsPlaceholder.WoodenLogPillar.name = "Log Pillar";
+	
+	WallsPlaceholder.MetalWallFrame = ISWoodenWall:new("constructedobjects_01_68","constructedobjects_01_69", nil);
+    WallsPlaceholder.MetalWallFrame.canBarricade = false;
+    WallsPlaceholder.MetalWallFrame.health = 120;
+    WallsPlaceholder.MetalWallFrame.name = "MetalWallFrame";
+    WallsPlaceholder.MetalWallFrame.modData["xp:MetalWelding"] = 0;
+    WallsPlaceholder.MetalWallFrame.modData["need:Base.MetalBar"]= "3";
+    WallsPlaceholder.MetalWallFrame.player = player;
+
+    WallsPlaceholder.MetalWallPillar = ISWoodenWall:new("constructedobjects_01_71", "constructedobjects_01_71", nil);
+    WallsPlaceholder.MetalWallPillar.modData["need:Base.MetalBar"]= "3";
+    WallsPlaceholder.MetalWallPillar.modData["xp:MetalWelding"] = 0;
+	WallsPlaceholder.MetalWallPillar.canPassThrough = true;
+	WallsPlaceholder.MetalWallPillar.canBarricade = false;
+    WallsPlaceholder.MetalWallPillar.player = player;
+    WallsPlaceholder.MetalWallPillar.health = 120;
+    WallsPlaceholder.WoodenWallPillar.name = "Metal Pillar";
+
+end
 
 WallsPlaceholder.replace = function(square, tileObject)
 
@@ -72,6 +157,16 @@ WallsPlaceholder.replace = function(square, tileObject)
 
     	sprite = { sprite = "walls_exterior_wooden_01_27", northSprite = "walls_exterior_wooden_01_27", corner = nil };
 	    WallsPlaceholder.addwall(square, WallsPlaceholder.WoodenWallPillar, true, sprite);
+        isUsed = true;
+
+    end
+
+    if (tileObject:getSprite():getName() == WallsPlaceholder.metal_frame_pillar)
+    or (tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_pillar_1)
+    or (tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_pillar_2) then
+
+    	sprite = { sprite = "constructedobjects_01_71", northSprite = "constructedobjects_01_71", corner = nil };
+	    WallsPlaceholder.addwall(square, WallsPlaceholder.MetalWallPillar, true, sprite);
         isUsed = true;
 
     end
@@ -102,6 +197,36 @@ WallsPlaceholder.replace = function(square, tileObject)
 
     	sprite = { sprite = "carpentry_02_102", northSprite = "carpentry_02_102", corner = true };
     	WallsPlaceholder.addwall(square, WallsPlaceholder.WoodenWallFrame, true, sprite);
+        isUsed = true;
+
+    end
+
+    ----------------------
+    -- METAL WALL FRAME --
+    ----------------------
+    sprite = { sprite = "constructedobjects_01_68", northSprite = "constructedobjects_01_69", corner = nil };
+
+	-- metal_frame_north 
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_frame_north then
+
+	    WallsPlaceholder.addwall(square, WallsPlaceholder.MetalWallFrame, true, sprite);
+        isUsed = true;
+
+    end
+
+	-- metal_frame_west 
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_frame_west then
+
+    	WallsPlaceholder.addwall(square, WallsPlaceholder.MetalWallFrame, false, sprite);
+        isUsed = true;
+
+    end
+
+	-- metal_frame_corner 
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_frame_corner then
+
+    	sprite = { sprite = "constructedobjects_01_70", northSprite = "constructedobjects_01_70", corner = true };
+    	WallsPlaceholder.addwall(square, WallsPlaceholder.MetalWallFrame, true, sprite);
         isUsed = true;
 
     end
@@ -165,7 +290,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_west_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_west_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_wall, 1, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 1, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_wall);
         isUsed = true;
 
@@ -174,7 +299,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_north_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_north_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_wall, 1, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 1, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_wall);
         isUsed = true;
 
@@ -183,7 +308,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_corner_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_corner_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_corner, 1, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_corner, 1, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_corner);
         isUsed = true;
 
@@ -192,7 +317,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_window_frame_west_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_west_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_window_frame, 1, true, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
         isUsed = true;
 
@@ -201,7 +326,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_window_frame_north_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_north_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_window_frame, 1, true, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
         isUsed = true;
 
@@ -210,7 +335,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_door_frame_west_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_door_frame_west_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_door_frame, 1, false, true, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 1, false, true, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_door_frame);
         isUsed = true;
 
@@ -219,7 +344,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_door_frame_north_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_door_frame_north_1 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_door_frame, 1, false, true, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 1, false, true, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_door_frame);
         isUsed = true;
 
@@ -234,7 +359,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_west_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_west_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_wall, 2, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 2, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_wall);
         isUsed = true;
 
@@ -243,7 +368,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_north_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_north_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_wall, 2, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 2, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_wall);
         isUsed = true;
 
@@ -252,7 +377,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_corner_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_corner_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_corner, 2, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_corner, 2, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_corner);
         isUsed = true;
 
@@ -261,7 +386,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_window_frame_west_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_west_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_window_frame, 2, true, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
         isUsed = true;
 
@@ -270,7 +395,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_window_frame_north_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_north_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_window_frame, 2, true, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
         isUsed = true;
 
@@ -279,7 +404,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_door_frame_west_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_door_frame_west_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_door_frame, 2, false, true, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 2, false, true, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_door_frame);
         isUsed = true;
 
@@ -288,7 +413,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_door_frame_north_2
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_door_frame_north_2 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_door_frame, 2, false, true, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 2, false, true, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_door_frame);
         isUsed = true;
 
@@ -303,7 +428,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_west_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_west_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_wall, 3, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 3, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_wall);
         isUsed = true;
 
@@ -312,7 +437,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_north_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_north_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_wall, 3, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 3, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_wall);
         isUsed = true;
 
@@ -321,7 +446,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_wall_corner_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_corner_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_corner, 3, false, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_corner, 3, false, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_corner);
         isUsed = true;
 
@@ -330,7 +455,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_window_frame_west_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_west_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_window_frame, 3, true, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 3, true, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
         isUsed = true;
 
@@ -339,7 +464,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_window_frame_north_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_north_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_window_frame, 3, true, false, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 3, true, false, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
         isUsed = true;
 
@@ -348,7 +473,7 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_door_frame_west_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_door_frame_west_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_door_frame, 3, false, true, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 3, false, true, false, player);
 	    WallsPlaceholder.addwall(square, wall, false, sprite_door_frame);
         isUsed = true;
 
@@ -357,13 +482,12 @@ WallsPlaceholder.replace = function(square, tileObject)
     -- wooden_door_frame_north_3
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_door_frame_north_3 then
 
-    	wall = WallsPlaceholder.InitializeWoodenWall(sprite_door_frame, 3, false, true, player);
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 3, false, true, false, player);
 	    WallsPlaceholder.addwall(square, wall, true, sprite_door_frame);
         isUsed = true;
 
     end
 
-	--[[ Work in progress
     -------------------
     -- WOODEN FENCES --
     -------------------
@@ -375,6 +499,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 
     -- wooden_fence_west_1
     if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_west_1 then
+
+    	print("wooden_fence_west_1");
 
     	fence = WallsPlaceholder.InitializeWoodenFence(sprite_fence, 1, false, player);
 	    WallsPlaceholder.addwall(square, fence, false, sprite_fence);
@@ -414,12 +540,224 @@ WallsPlaceholder.replace = function(square, tileObject)
 	sprite_corner = { sprite = "carpentry_02_46", northSprite = "carpentry_02_46", corner = true };
 	sprite_stake = { sprite = "carpentry_02_47", northSprite = "carpentry_02_47", corner = nil };
 
+    -- wooden_fence_west_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_west_2 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_fence, 2, false, player);
+        WallsPlaceholder.addwall(square, fence, false, sprite_fence);
+        isUsed = true;
+
+    end
+
+    -- wooden_fence_north_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_north_2 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_fence, 2, false, player);
+        WallsPlaceholder.addwall(square, fence, true, sprite_fence);
+        isUsed = true;
+
+    end
+
+    -- wooden_fence_corner_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_corner_2 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_corner, 2, false, player);
+        WallsPlaceholder.addwall(square, fence, true, sprite_corner);
+        isUsed = true;
+
+    end
+
+    -- wooden_fence_pillar_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_pillar_2 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_stake, 2, false, player);
+        WallsPlaceholder.addwall(square, fence, true, sprite_stake);
+        isUsed = true;
+
+    end
+
     -- Level 3 - Wooden fence
 	sprite_fence = { sprite = "carpentry_02_48", northSprite = "carpentry_02_49", corner = nil };
 	sprite_corner = { sprite = "carpentry_02_50", northSprite = "carpentry_02_50", corner = true };
 	sprite_stake = { sprite = "carpentry_02_51", northSprite = "carpentry_02_51", corner = nil };
-	]]--
 
+    -- wooden_fence_west_3
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_west_3 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_fence, 3, false, player);
+        WallsPlaceholder.addwall(square, fence, false, sprite_fence);
+        isUsed = true;
+
+    end
+
+    -- wooden_fence_north_3
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_north_3 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_fence, 3, false, player);
+        WallsPlaceholder.addwall(square, fence, true, sprite_fence);
+        isUsed = true;
+
+    end
+
+    -- wooden_fence_corner_3
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_corner_3 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_corner, 3, false, player);
+        WallsPlaceholder.addwall(square, fence, true, sprite_corner);
+        isUsed = true;
+
+    end
+
+    -- wooden_fence_pillar_3
+    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_pillar_3 then
+
+        fence = WallsPlaceholder.InitializeWoodenFence(sprite_stake, 3, false, player);
+        WallsPlaceholder.addwall(square, fence, true, sprite_stake);
+        isUsed = true;
+
+    end
+
+    ------------------
+    -- METAL WALLS --
+    ------------------
+
+    -- Level 1 - Metal Wall
+	sprite_wall = { sprite = "constructedobjects_01_64", northSprite = "constructedobjects_01_65", corner = nil };
+	sprite_corner = { sprite = "constructedobjects_01_66", northSprite = "constructedobjects_01_66", corner = true };
+	sprite_window_frame = { sprite = "constructedobjects_01_72", northSprite = "constructedobjects_01_73", corner = nil };
+	sprite_door_frame = { sprite = "constructedobjects_01_74", northSprite = "constructedobjects_01_75", corner = nil };
+
+    -- wooden_wall_west_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_west_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 1, false, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, false, sprite_wall);
+        isUsed = true;
+
+    end
+
+    -- wooden_wall_north_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_north_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 1, false, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_wall);
+        isUsed = true;
+
+    end
+
+    -- wooden_wall_corner_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_corner_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_corner, 1, false, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_corner);
+        isUsed = true;
+
+    end
+
+    -- wooden_window_frame_west_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_west_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+        isUsed = true;
+
+    end
+
+    -- wooden_window_frame_north_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_north_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+        isUsed = true;
+
+    end
+
+    -- wooden_door_frame_west_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_door_frame_west_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 1, false, true, true, player);
+	    WallsPlaceholder.addwall(square, wall, false, sprite_door_frame);
+        isUsed = true;
+
+    end
+
+    -- wooden_door_frame_north_1
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_door_frame_north_1 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 1, false, true, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_door_frame);
+        isUsed = true;
+
+    end
+
+    -- Level 2 - Metal Wall
+	sprite_wall = { sprite = "constructedobjects_01_48", northSprite = "constructedobjects_01_49", corner = nil };
+	sprite_corner = { sprite = "constructedobjects_01_50", northSprite = "constructedobjects_01_50", corner = true };
+	sprite_window_frame = { sprite = "constructedobjects_01_56", northSprite = "constructedobjects_01_57", corner = nil };
+	sprite_door_frame = { sprite = "constructedobjects_01_58", northSprite = "constructedobjects_01_59", corner = nil };
+
+    -- wooden_wall_west_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_west_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 2, false, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, false, sprite_wall);
+        isUsed = true;
+
+    end
+
+    -- wooden_wall_north_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_north_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_wall, 2, false, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_wall);
+        isUsed = true;
+
+    end
+
+    -- wooden_wall_corner_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_corner_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_corner, 2, false, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_corner);
+        isUsed = true;
+
+    end
+
+    -- wooden_window_frame_west_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_west_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+        isUsed = true;
+
+    end
+
+    -- wooden_window_frame_north_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_north_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+        isUsed = true;
+
+    end
+
+    -- wooden_door_frame_west_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_door_frame_west_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 2, false, true, true, player);
+	    WallsPlaceholder.addwall(square, wall, false, sprite_door_frame);
+        isUsed = true;
+
+    end
+
+    -- wooden_door_frame_north_2
+    if tileObject:getSprite():getName() == WallsPlaceholder.metal_door_frame_north_2 then
+
+    	wall = WallsPlaceholder.InitializeWall(sprite_door_frame, 2, false, true, true, player);
+	    WallsPlaceholder.addwall(square, wall, true, sprite_door_frame);
+        isUsed = true;
+
+    end
 
     return isUsed;
 
@@ -449,85 +787,64 @@ WallsPlaceholder.addwall = function(square, wall, isNorth, sprite)
 
 end
 
-WallsPlaceholder.InitializeWallTypes = function(player)
+WallsPlaceholder.InitializeWall = function(sprite, level, isWindowFrame, isDoorFrame, isMetal, player)
 
-	sprite = ISBuildMenu.getWoodenWallFrameSprites(player);
-	WallsPlaceholder.WoodenWallFrame = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
-    WallsPlaceholder.WoodenWallFrame.canBarricade = false;
-    WallsPlaceholder.WoodenWallFrame.name = "WoodenWallFrame";
-    WallsPlaceholder.WoodenWallFrame.modData["xp:Woodwork"] = 0;
-    WallsPlaceholder.WoodenWallFrame.modData["need:Base.Plank"] = "2";
-    WallsPlaceholder.WoodenWallFrame.modData["need:Base.Nails"] = "2";
-    WallsPlaceholder.WoodenWallFrame.health = 50;
-    WallsPlaceholder.WoodenWallFrame.player = player;
+	if (isMetal == false) then
+		if (isDoorFrame == true) then
+			wall = ISWoodenDoorFrame:new(sprite.sprite, sprite.northSprite, sprite.corner);
+		    wall.modData["wallType"] = "doorframe";
+			wall.modData["need:Base.Plank"] = "4";
+			wall.modData["need:Base.Nails"] = "4";
+		elseif (isWindowFrame == true) then
+			wall = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
+	    	wall.modData["wallType"] = "windowsframe";
+			wall.name = "Window Frame";
+			wall.hoppable = true;
+			wall.isThumpable = false;
+			wall.modData["need:Base.Plank"] = "4";
+			wall.modData["need:Base.Nails"] = "4";
+		else
+			wall = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
+	   		wall.modData["wallType"] = "wall";
+			wall.modData["need:Base.Plank"] = "3";
+			wall.modData["need:Base.Nails"] = "3";
+		end
+    	wall.modData["xp:Woodwork"] = 0;
 
-    WallsPlaceholder.WoodenWallPillar = ISWoodenWall:new("walls_exterior_wooden_01_27", "walls_exterior_wooden_01_27", nil);
-	WallsPlaceholder.WoodenWallPillar.modData["need:Base.Plank"] = "2";
-	WallsPlaceholder.WoodenWallPillar.modData["need:Base.Nails"] = "3";
-    WallsPlaceholder.WoodenWallPillar.modData["xp:Woodwork"] = 0;
-	WallsPlaceholder.WoodenWallPillar.canPassThrough = true;
-	WallsPlaceholder.WoodenWallPillar.canBarricade = false;
-    WallsPlaceholder.WoodenWallPillar.player = player;
-    WallsPlaceholder.WoodenWallPillar.health = 55;
-    WallsPlaceholder.WoodenWallPillar.name = "Wooden Pillar";
-
-    WallsPlaceholder.WoodenLogWall = ISWoodenWall:new("carpentry_02_80", "carpentry_02_81", nil);
-    WallsPlaceholder.WoodenLogWall.modData["need:Base.Log"] = "4";
-    WallsPlaceholder.WoodenLogWall.modData["need:Base.Rope"] = "2";
-    WallsPlaceholder.WoodenLogWall.modData["xp:Woodwork"] = 0;
-    WallsPlaceholder.WoodenLogWall.player = player;
-	WallsPlaceholder.WoodenLogWall.noNeedHammer = true;
-	WallsPlaceholder.WoodenLogWall.canBarricade = false;
-    WallsPlaceholder.WoodenLogWall.health = 500;
-	WallsPlaceholder.WoodenLogWall.name = "Log Wall";
-
-    WallsPlaceholder.WoodenLogPillar = ISWoodenWall:new("carpentry_02_83", "carpentry_02_83", nil);
-    WallsPlaceholder.WoodenLogPillar.modData["need:Base.Log"] = "4";
-    WallsPlaceholder.WoodenLogPillar.modData["need:Base.Rope"] = "2";
-    WallsPlaceholder.WoodenLogPillar.modData["xp:Woodwork"] = 0;
-	WallsPlaceholder.WoodenLogPillar.canPassThrough = true;
-    WallsPlaceholder.WoodenLogPillar.player = player;
-	WallsPlaceholder.WoodenLogPillar.noNeedHammer = true;
-	WallsPlaceholder.WoodenLogPillar.canBarricade = false;
-    WallsPlaceholder.WoodenLogPillar.health = 500;
-	WallsPlaceholder.WoodenLogPillar.name = "Log Pillar";
-
-
-end
-
-WallsPlaceholder.InitializeWoodenWall = function(sprite, level, isWindowFrame, isDoorFrame, player)
-
-	if (isDoorFrame == true) then
-		wall = ISWoodenDoorFrame:new(sprite.sprite, sprite.northSprite, sprite.corner);
-	    wall.modData["wallType"] = "doorframe";
-		wall.modData["need:Base.Plank"] = "4";
-		wall.modData["need:Base.Nails"] = "4";
-	elseif (isWindowFrame == true) then
-		wall = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
-    	wall.modData["wallType"] = "windowsframe";
-		wall.name = "Window Frame";
-		wall.hoppable = true;
-		wall.isThumpable = false;
-		wall.modData["need:Base.Plank"] = "4";
-		wall.modData["need:Base.Nails"] = "4";
+	    if level == 1 then
+	    	wall.health = 300;
+	    elseif level == 2 then
+	    	wall.health = 500;
+	    else
+	    	wall.health = 800;
+			wall.canBePlastered = true;
+	    end
 	else
-		wall = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
-   		wall.modData["wallType"] = "wall";
-		wall.modData["need:Base.Plank"] = "3";
-		wall.modData["need:Base.Nails"] = "3";
+		if (isDoorFrame == true) then
+			wall = ISWoodenDoorFrame:new(sprite.sprite, sprite.northSprite, sprite.corner);
+	   		wall.modData["wallType"] = "doorframe";
+		elseif (isWindowFrame == true) then
+			wall = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
+	    	wall.modData["wallType"] = "windowsframe";
+			wall.name = "Window Frame";
+			wall.hoppable = true;
+			wall.isThumpable = false;
+		else
+			wall = ISWoodenWall:new(sprite.sprite, sprite.northSprite, sprite.corner);
+		end
+    	wall.modData["xp:MetalWelding"] = 0;
+		wall.modData["need:Base.MetalBar"] = "4";
+		wall.modData["need:Base.SheetMetal"] = "2";
+		wall.modData["need:Base.SmallSheetMetal"] = "2";
+
+	    if level == 1 then
+	    	wall.health = 500;
+	    else
+	    	wall.health = 1000;
+	    end
 	end
 	wall.player = player;
 	wall.canBarricade = false;
-    wall.modData["xp:Woodwork"] = 0;
-
-    if level == 1 then
-    	wall.health = 300;
-    elseif level == 2 then
-    	wall.health = 500;
-    else
-    	wall.health = 800;
-		wall.canBePlastered = true;
-    end
 
 	return wall;
 
@@ -539,7 +856,7 @@ WallsPlaceholder.InitializeWoodenFence = function(sprite, level, isStake, player
 	fence.canBarricade = false;
 	fence.modData["xp:Woodwork"] = 0;
 	fence.player = player;
-	if isStake == ture then
+	if isStake == true then
 		fence.canPassThrough = true;
 		fence.canBeAlwaysPlaced = true;
 		fence.modData["need:Base.Plank"] = "1";
@@ -554,11 +871,11 @@ WallsPlaceholder.InitializeWoodenFence = function(sprite, level, isStake, player
 	end
 
     if level == 1 then
-    	wall.health = 50;
+    	fence.health = 50;
     elseif level == 2 then
-    	wall.health = 100;
+    	fence.health = 100;
     else
-    	wall.health = 200;
+    	fence.health = 200;
     end
 
 	return fence;
@@ -574,3 +891,5 @@ SpawnFromPlaceholder.Add({ name = "WallsPlaceholder", indexModifier = 0 });
 -- Walls_2 = 200 + 300 = 500
 -- Walls_3 = 200 + 600 = 800
 -- Logs = 400 + 100 = 500
+-- Metal low level 500
+-- Metal High level 1000
