@@ -9,8 +9,8 @@ WindowStuffPlaceholder = {
 
     windowBreakerSprites = { right="placeholder_windows_01_0", left="placeholder_windows_01_1" },
     windowCleanerSprites = { right="placeholder_windows_01_2", left="placeholder_windows_01_3" },
-
-    addSheetRopeSprites  = { right="placeholder_windows_01_4", left="placeholder_windows_01_5" },
+    addSheetRopeExteriorSprites  = { right="placeholder_windows_01_4", left="placeholder_windows_01_5" },
+    addSheetRopeInteriorSprites  = { right="placeholder_windows_01_6", left="placeholder_windows_01_7" },
 
 };
 
@@ -31,8 +31,29 @@ WindowStuffPlaceholder.matchPlaceholders = function(sprite)
         end
 
         -- Add Sheet rope
-        if sprite == WindowStuffPlaceholder.addSheetRopeSprites.left or sprite == WindowStuffPlaceholder.addSheetRopeSprites.right then
+        if sprite == WindowStuffPlaceholder.addSheetRopeExteriorSprites.left then
             output.isSheetRope = true;
+            print("addSheetRopeExteriorSprites left")
+            output.isRight = false;
+            output.isBehind = false;
+        end
+        if sprite == WindowStuffPlaceholder.addSheetRopeExteriorSprites.right then
+            output.isSheetRope = true;
+            print("addSheetRopeExteriorSprites right")
+            output.isRight = true;
+            output.isBehind = false;
+        end
+        if sprite == WindowStuffPlaceholder.addSheetRopeInteriorSprites.left then
+            output.isSheetRope = true;
+            print("addSheetRopeInteriorSprites left")
+            output.isRight = false;
+            output.isBehind = true;
+        end
+        if sprite == WindowStuffPlaceholder.addSheetRopeInteriorSprites.right then
+            output.isSheetRope = true;
+            print("addSheetRopeInteriorSprites right")
+            output.isRight = true;
+            output.isBehind = true;
         end
     end
 
@@ -56,19 +77,124 @@ WindowStuffPlaceholder.replace = function(square, tileObject)
                     windowTile:removeBrokenGlass();
                     isUsed = true;
                 elseif args.isSheetRope then
-                    local player = getSpecificPlayer(0);
-                    --[[if isClient() then
-                        local args = { x=windowTile:getX(), y=windowTile:getY(), z=windowTile:getZ(), index=windowTile:getObjectIndex(), itemType="SheetRope" }
-                        sendClientCommand(player, 'object', 'addSheetRope', args)
-                    else]]
+                    local player;
+                    -- local player = getSpecificPlayer(0);
+                    if windowTile ~= nil then
+                        print("Toggling window", "tile="..tostring(windowTile), "isLocked="..tostring(windowTile:isLocked()), "room="..tostring(square:getRoom()))
+                        if not windowTile:IsOpen() then
+                            -- windowTile:smashWindow();
+                            -- windowTile:removeBrokenGlass();
+                            windowTile:ToggleWindow(player);
+                        end
+                    end
+
                     if IsoWindowFrame.isWindowFrame(windowTile) then
-                        print("Tile is Frame")
                         IsoWindowFrame.addSheetRope(windowTile, player, "SheetRope");
-                        -- isUsed = true;
-                    elseif instanceof(windowTile, 'IsoWindow') or instanceof(windowTile, 'IsoThumpable') then
-                        print("Tile is IsoWindow")
-                        windowTile:addSheetRope(player, "SheetRope");
-                        -- isUsed = true;
+                        isUsed = true;
+                    elseif instanceof(windowTile, 'IsoWindow') then
+                        local itemType = "SheetRope";
+                        local north = not args.isRight;
+                        local sq = windowTile:getSquare();
+                        -- boolean
+                        local bLast = false;
+                        -- int
+                        local n = 0;
+                        -- byte
+                        local i = 0;
+                        if(north) then
+                            i = 1;
+                        end
+
+                        -- boolean
+                        local south = false;
+                        -- boolean
+                        local east = false;
+                        -- IsoGridSquare
+                        local sqe;
+                        -- IsoGridSquare
+                        local sqn;
+                        -- IsoCell
+                        local cell = getCell();
+                        if(sq:TreatAsSolidFloor()) then
+                            if(not north) then
+                                sqe = cell:getGridSquare(sq:getX() - 1, sq:getY(), sq:getZ());
+                                if(sqe ~= nil) then
+                                east = true;
+                                i = 3;
+                                end
+                            else
+                                sqn = cell:getGridSquare(sq:getX(), sq:getY() - 1, sq:getZ());
+                                if(sqn ~= nil) then
+                                    south = true;
+                                    i = 4;
+                                end
+                            end
+                        end
+
+                        sq:getProperties():Is(IsoFlagType.solidfloor);
+
+                        while(sq ~= nil) do
+                            local d = "crafted_01_" .. i;
+                            if(n > 0) then
+                                if(east) then
+                                    d = "crafted_01_10";
+                                elseif(south) then
+                                    d = "crafted_01_13";
+                                else
+                                    d = "crafted_01_" .. (i + 8);
+                                end
+                            end
+
+                            -- IsoObject
+                            local sheetTop = IsoObject.new(cell, sq, d);
+                            sheetTop:setName(itemType);
+                            sq:getObjects():add(sheetTop);
+                            sheetTop:transmitCompleteItemToClients();
+
+                            if(south and n == 0) then
+                                sq = sqn;
+                                sheetTop = IsoObject.new(cell, sqn, "crafted_01_5");
+                                sheetTop:setName(itemType);
+                                sheetTop.sheetRope = true;
+                                sqn:getObjects():add(sheetTop);
+                                sheetTop:transmitCompleteItemToClients();
+                            end
+
+                            if(east and n == 0) then
+                                sq = sqe;
+                                sheetTop = IsoObject.new(cell, sqe, "crafted_01_2");
+                                sheetTop:setName(itemType);
+                                sheetTop.sheetRope = true;
+                                sqe:getObjects():add(sheetTop);
+                                sheetTop:transmitCompleteItemToClients();
+                            end
+
+                            sq:RecalcProperties();
+                            sq:getProperties():UnSet(IsoFlagType.solidtrans);
+
+                            --[[if(isServer()) then
+                                if(n == 0) then
+                                    player.sendObjectChange("removeOneOf", {type = "Nails"});
+                                end
+                                player.sendObjectChange("removeOneOf", {type = itemType});
+                            else
+                                if(n == 0) then
+                                    player.getInventory().RemoveOneOf("Nails");
+                                end
+                                player.getInventory().RemoveOneOf(itemType);
+                            end  ]]
+
+                            n = n + 1;
+                            if(bLast) then
+                                break;
+                            end
+
+                            sq = cell:getOrCreateGridSquare(sq:getX(), sq:getY(), (sq:getZ() - 1));
+                            if(sq ~= nil and sq:TreatAsSolidFloor()) then
+                                bLast = true;
+                            end
+                        end
+                        isUsed = true;
                     end
                 end
             end
