@@ -25,10 +25,17 @@ CampingCompostPlaceholder.replace = function(square, tileObject)
             if isClient() then
                 sendClientCommand(nil, 'camping', 'addCampfire', args);
             else
-                camping.addCampfire(square);
+                -- The method camping.addCampfire() didn't work well in this context
+                -- so I have implemented the minimal way to build a campfire
+                local newCampFire = ISCampfire:new(square:getX(), square:getY(), square:getZ())
+                newCampFire:addObject()
+                newCampFire:addContainer()
+                newCampFire:getObject():transmitCompleteItemToClients()
+
                 if isServer() then
                     camping:transmitCompleteItemToClients();
                 end
+
             end
 
             isUsed = true;
@@ -43,8 +50,6 @@ CampingCompostPlaceholder.replace = function(square, tileObject)
             local cell = getWorld():getCell();
             local sq = cell:getGridSquare(square:getX(), square:getY(), square:getZ());
             local javaObject = IsoCompost.new(cell, sq);
-            --square:AddSpecialObject(javaObject);
-            --javaObject:transmitCompleteItemToServer();
 
             isUsed = true;
         end
