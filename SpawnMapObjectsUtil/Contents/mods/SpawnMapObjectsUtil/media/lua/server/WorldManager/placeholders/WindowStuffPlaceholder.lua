@@ -33,25 +33,21 @@ WindowStuffPlaceholder.matchPlaceholders = function(sprite)
         -- Add Sheet rope
         if sprite == WindowStuffPlaceholder.addSheetRopeExteriorSprites.left then
             output.isSheetRope = true;
-            print("addSheetRopeExteriorSprites left")
             output.isRight = false;
             output.isBehind = false;
         end
         if sprite == WindowStuffPlaceholder.addSheetRopeExteriorSprites.right then
             output.isSheetRope = true;
-            print("addSheetRopeExteriorSprites right")
             output.isRight = true;
             output.isBehind = false;
         end
         if sprite == WindowStuffPlaceholder.addSheetRopeInteriorSprites.left then
             output.isSheetRope = true;
-            print("addSheetRopeInteriorSprites left")
             output.isRight = false;
             output.isBehind = true;
         end
         if sprite == WindowStuffPlaceholder.addSheetRopeInteriorSprites.right then
             output.isSheetRope = true;
-            print("addSheetRopeInteriorSprites right")
             output.isRight = true;
             output.isBehind = true;
         end
@@ -78,15 +74,12 @@ WindowStuffPlaceholder.replace = function(square, tileObject)
                     isUsed = true;
                 elseif args.isSheetRope then
                     local player;
-                    -- local player = getSpecificPlayer(0);
-                    if windowTile ~= nil then
+                    --[[if windowTile ~= nil then
                         print("Toggling window", "tile="..tostring(windowTile), "isLocked="..tostring(windowTile:isLocked()), "room="..tostring(square:getRoom()))
                         if not windowTile:IsOpen() then
-                            -- windowTile:smashWindow();
-                            -- windowTile:removeBrokenGlass();
                             windowTile:ToggleWindow(player);
                         end
-                    end
+                    end]]
 
                     if IsoWindowFrame.isWindowFrame(windowTile) then
                         IsoWindowFrame.addSheetRope(windowTile, player, "SheetRope");
@@ -182,7 +175,7 @@ WindowStuffPlaceholder.replace = function(square, tileObject)
                                     player.getInventory().RemoveOneOf("Nails");
                                 end
                                 player.getInventory().RemoveOneOf(itemType);
-                            end  ]]
+                            end]]
 
                             n = n + 1;
                             if(bLast) then
