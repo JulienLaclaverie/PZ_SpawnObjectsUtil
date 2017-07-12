@@ -282,10 +282,12 @@ BarricadePlaceholder.placeBarricade = function(object, args)
             for i=0, args.barricade.amount - 1 do
                 barricade:addPlank(nil, plank);
 
-                if barricade:getNumPlanks() == 1 then
-                    barricade:transmitCompleteItemToClients();
-                else
-                    barricade:sendObjectChange('state');
+                if isServer() then
+                    if barricade:getNumPlanks() == 1 then
+                        barricade:transmitCompleteItemToClients();
+                    else
+                        barricade:sendObjectChange('state');
+                    end
                 end
             end
         end
