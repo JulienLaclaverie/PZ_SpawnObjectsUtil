@@ -17,49 +17,51 @@ CampingCompostPlaceholder = {
 CampingCompostPlaceholder.replace = function(square, tileObject)
 
     local isUsed = false;
+    if luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_camping_compost_01") then
 
-    -- Place a campfire
-    if tileObject:getSprite():getName() == CampingCompostPlaceholder.campfire then
-        local args = { x = square:getX(), y = square:getY(), z = square:getZ() };
-        if isClient() then
-            sendClientCommand(nil, 'camping', 'addCampfire', args);
-        else
-            camping.addCampfire(square);
-            if isServer() then
-                camping:transmitCompleteItemToClients();
+        -- Place a campfire
+        if tileObject:getSprite():getName() == CampingCompostPlaceholder.campfire then
+            local args = { x = square:getX(), y = square:getY(), z = square:getZ() };
+            if isClient() then
+                sendClientCommand(nil, 'camping', 'addCampfire', args);
+            else
+                camping.addCampfire(square);
+                if isServer() then
+                    camping:transmitCompleteItemToClients();
+                end
             end
+
+            isUsed = true;
         end
 
-        isUsed = true;
+        -- Place a composter
+        if tileObject:getSprite():getName() == CampingCompostPlaceholder.composter then
+            -- Remove the placeholder & load the furnace
+            tileObject:transmitCompleteItemToClients();
+
+            -- Adding the compost to the world
+            local cell = getWorld():getCell();
+            local sq = cell:getGridSquare(square:getX(), square:getY(), square:getZ());
+            local javaObject = IsoCompost.new(cell, sq);
+            --square:AddSpecialObject(javaObject);
+            --javaObject:transmitCompleteItemToServer();
+
+            isUsed = true;
+        end
+
+        -- Place a camping tent (South)
+        if tileObject:getSprite():getName() == CampingCompostPlaceholder.campingTentSouth then
+            camping.addTent(square, "camping_01_0");
+            isUsed = true;
+        end
+
+        -- Place a camping tent (East)
+        if tileObject:getSprite():getName() == CampingCompostPlaceholder.campingTentEast then
+            camping.addTent(square, "camping_01_3");
+            isUsed = true;
+        end
+
     end
-
-    -- Place a composter
-    if tileObject:getSprite():getName() == CampingCompostPlaceholder.composter then
-        -- Remove the placeholder & load the furnace
-        tileObject:transmitCompleteItemToClients();
-
-        -- Adding the compost to the world
-        local cell = getWorld():getCell();
-        local sq = cell:getGridSquare(square:getX(), square:getY(), square:getZ());
-        local javaObject = IsoCompost.new(cell, sq);
-        --square:AddSpecialObject(javaObject);
-        --javaObject:transmitCompleteItemToServer();
-
-        isUsed = true;
-    end
-
-    -- Place a camping tent (South)
-    if tileObject:getSprite():getName() == CampingCompostPlaceholder.campingTentSouth then
-        camping.addTent(square, "camping_01_0");
-        isUsed = true;
-    end
-
-    -- Place a camping tent (East)
-    if tileObject:getSprite():getName() == CampingCompostPlaceholder.campingTentEast then
-        camping.addTent(square, "camping_01_3");
-        isUsed = true;
-    end
-
     return isUsed;
 end
 

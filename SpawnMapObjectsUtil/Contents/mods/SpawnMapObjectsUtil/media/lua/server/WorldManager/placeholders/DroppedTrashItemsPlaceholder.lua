@@ -13,58 +13,61 @@ DroppedTrashItemsPlaceholder = {
 
 DroppedTrashItemsPlaceholder.replace = function(square, tileObject)
 
-    local randomContent = ZombRand(0,100)+1;
     local isUsed = false;
+    if luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_items_trash_01") then
 
-    if tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.newspaper_1 then
+        local randomContent = ZombRand(0,100)+1;
 
-        square:AddWorldInventoryItem("Base.Newspaper", 0, 0, 0);
-        isUsed = true;
+        if tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.newspaper_1 then
 
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.paper_sheet_1_2 then
+            square:AddWorldInventoryItem("Base.Newspaper", 0, 0, 0);
+            isUsed = true;
 
-        square:AddWorldInventoryItem("Base.SheetPaper", 0, 0, 0);
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.paper_sheet_1_2 then
 
-        if (randomContent >= 50) then
             square:AddWorldInventoryItem("Base.SheetPaper", 0, 0, 0);
+
+            if (randomContent >= 50) then
+                square:AddWorldInventoryItem("Base.SheetPaper", 0, 0, 0);
+            end
+            isUsed = true;
+
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.book_1 then
+
+            square:AddWorldInventoryItem("Base.Book", 0, 0, 0);
+            isUsed = true;
+
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.magasine_1 then
+
+            square:AddWorldInventoryItem("Base.Magazine", 0, 0, 0);
+            isUsed = true;
+
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.journal_1 then
+
+            square:AddWorldInventoryItem("Base.Notebook", 0, 0, 0);
+            isUsed = true;
+
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_1 then
+
+            square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
+            isUsed = true;
+
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_2 then
+
+            square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
+            square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
+            isUsed = true;
+
+        elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_3 then
+
+            square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
+            square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
+            square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
+            isUsed = true;
+
         end
-        isUsed = true;
-
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.book_1 then
-
-        square:AddWorldInventoryItem("Base.Book", 0, 0, 0);
-        isUsed = true;
-
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.magasine_1 then
-
-        square:AddWorldInventoryItem("Base.Magazine", 0, 0, 0);
-        isUsed = true;
-
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.journal_1 then
-
-        square:AddWorldInventoryItem("Base.Notebook", 0, 0, 0);
-        isUsed = true;
-
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_1 then
-
-        square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        isUsed = true;
-
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_2 then
-
-        square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        isUsed = true;
-
-    elseif tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.garbage_bag_3 then
-
-        square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        square:AddWorldInventoryItem("Base.Garbagebag", 0, 0, 0);
-        isUsed = true;
 
     end
-
     return isUsed;
 end
 

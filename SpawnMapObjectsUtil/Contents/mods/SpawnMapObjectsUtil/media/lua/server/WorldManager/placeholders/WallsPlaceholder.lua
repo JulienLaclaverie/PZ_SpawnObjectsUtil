@@ -162,32 +162,22 @@ WallsPlaceholder.replace = function(square, tileObject)
 	player = getPlayer():getPlayerNum();
 	WallsPlaceholder.InitializeWallTypes(player);
 
-    -------------
-	-- PILLARS --
-    -------------
-    if (tileObject:getSprite():getName() == WallsPlaceholder.wooden_frame_pillar)
-    or (tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_pillar_1)
-    or (tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_pillar_2)
-    or (tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_pillar_3) then
-
-    	sprite = { sprite = "walls_exterior_wooden_01_27", northSprite = "walls_exterior_wooden_01_27", corner = nil };
-	    WallsPlaceholder.addwall(square, WallsPlaceholder.WoodenWallPillar, true, sprite);
-        isUsed = true;
-
-    end
-
-    if (tileObject:getSprite():getName() == WallsPlaceholder.metal_frame_pillar)
-    or (tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_pillar_1)
-    or (tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_pillar_2) then
-
-    	sprite = { sprite = "constructedobjects_01_71", northSprite = "constructedobjects_01_71", corner = nil };
-	    WallsPlaceholder.addwall(square, WallsPlaceholder.MetalWallPillar, true, sprite);
-        isUsed = true;
-
-    end
-
 	-- Better performance by reducing the number of ifs used
     if luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_walls_wooden_") then
+
+	    ------------------
+		-- WOOD PILLARS --
+	    ------------------
+	    if (tileObject:getSprite():getName() == WallsPlaceholder.wooden_frame_pillar)
+	    or (tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_pillar_1)
+	    or (tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_pillar_2)
+	    or (tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_pillar_3) then
+
+	    	sprite = { sprite = "walls_exterior_wooden_01_27", northSprite = "walls_exterior_wooden_01_27", corner = nil };
+		    WallsPlaceholder.addwall(square, WallsPlaceholder.WoodenWallPillar, true, sprite);
+	        isUsed = true;
+
+	    end
 
     	------------------
 	    -- WOODEN WALLS --
@@ -400,7 +390,6 @@ WallsPlaceholder.replace = function(square, tileObject)
 
 	    end
 
-
     elseif luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_carpentry_") then
 
 	    -----------------------
@@ -607,6 +596,19 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    end
 
     elseif luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_constructedobjects_") then
+
+	    -------------------
+		-- METAL PILLARS --
+	    -------------------
+	    if (tileObject:getSprite():getName() == WallsPlaceholder.metal_frame_pillar)
+	    or (tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_pillar_1)
+	    or (tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_pillar_2) then
+
+	    	sprite = { sprite = "constructedobjects_01_71", northSprite = "constructedobjects_01_71", corner = nil };
+		    WallsPlaceholder.addwall(square, WallsPlaceholder.MetalWallPillar, true, sprite);
+	        isUsed = true;
+
+	    end
 
 	    ----------------------
 	    -- METAL WALL FRAME --
