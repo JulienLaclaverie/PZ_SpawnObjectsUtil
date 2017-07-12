@@ -159,6 +159,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 
     local isUsed = false;
     local randomContent = ZombRand(0,100)+1;
+
+	if getPlayer() == nil then
+		return false;
+	end
 	player = getPlayer():getPlayerNum();
 	WallsPlaceholder.InitializeWallTypes(player);
 

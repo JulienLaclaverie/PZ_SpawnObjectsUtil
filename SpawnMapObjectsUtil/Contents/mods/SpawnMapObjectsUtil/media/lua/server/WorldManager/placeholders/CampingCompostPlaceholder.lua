@@ -27,14 +27,10 @@ CampingCompostPlaceholder.replace = function(square, tileObject)
             else
                 -- The method camping.addCampfire() didn't work well in this context
                 -- so I have implemented the minimal way to build a campfire
-                local newCampFire = ISCampfire:new(square:getX(), square:getY(), square:getZ())
-                newCampFire:addObject()
-                newCampFire:addContainer()
-                newCampFire:getObject():transmitCompleteItemToClients()
-
-                if isServer() then
-                    camping:transmitCompleteItemToClients();
-                end
+                local newCampFire = ISCampfire:new(square:getX(), square:getY(), square:getZ());
+                newCampFire:addObject();
+                newCampFire:addContainer();
+                newCampFire:getObject():transmitCompleteItemToClients();
 
             end
 

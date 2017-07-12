@@ -53,6 +53,9 @@ CarpentryAndConstructedPlaceholder.replace = function(square, tileObject)
 	if luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_carpentry_02") then
 		
 	    local randomContent = ZombRand(0,100)+1;
+		if getPlayer() == nil then
+			return false;
+		end
 		player = getPlayer():getPlayerNum();
 		CarpentryAndConstructedPlaceholder.InitializeItems(player);
 
