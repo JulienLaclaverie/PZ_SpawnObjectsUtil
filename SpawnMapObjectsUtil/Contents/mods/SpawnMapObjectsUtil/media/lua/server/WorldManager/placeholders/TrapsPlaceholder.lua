@@ -12,7 +12,7 @@ TrapsPlaceholder.replace = function(square, tileObject)
     -- FishingNetNorth
     if tileObject:getSprite():getName() == TrapsPlaceholder.fishingNetNorth then
 
-        TrapsPlaceholder.addTrap(square, "constructedobjects_01_15", "FishingNet");
+        TrapsPlaceholder.addFishTrap(square, "constructedobjects_01_15", "FishingNet");
         isUsed = true;
 
     end
@@ -20,7 +20,7 @@ TrapsPlaceholder.replace = function(square, tileObject)
     -- fishingNetWest
     if tileObject:getSprite():getName() == TrapsPlaceholder.fishingNetWest then
 
-        TrapsPlaceholder.addTrap(square, "constructedobjects_01_14", "FishingNet");
+        TrapsPlaceholder.addFishTrap(square, "constructedobjects_01_14", "FishingNet");
         isUsed = true;
 
     end
@@ -29,7 +29,7 @@ TrapsPlaceholder.replace = function(square, tileObject)
 
 end
     
-TrapsPlaceholder.addTrap = function(square, spriteToUse, trapName)
+TrapsPlaceholder.addFishTrap = function(square, spriteToUse, trapName)
 
     local trap = IsoObject.new(square, spriteToUse, trapName);
     square:AddTileObject(trap);
