@@ -86,28 +86,28 @@ CarpentryAndConstructedPlaceholder.replace = function(square, tileObject)
 
 	    if tileObject:getSprite():getName() == CarpentryAndConstructedPlaceholder.rain_collector_small_empty then
 
-	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.SmallBarrel, false, "carpentry_02_54", false);
+	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.SmallBarrel, false, "carpentry_02_54", false, nil);
 	        isUsed = true;
 
 	    end
 
 	    if tileObject:getSprite():getName() == CarpentryAndConstructedPlaceholder.rain_collector_small_full then
 	    	
-	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.SmallBarrel, false, "carpentry_02_54", true);
+	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.SmallBarrel, false, "carpentry_02_54", true, "carpentry_02_55");
 	        isUsed = true;
 
 	    end
 
 	    if tileObject:getSprite():getName() == CarpentryAndConstructedPlaceholder.rain_collector_big_empty then
 
-	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.BigBarrel, false, "carpentry_02_52", false);
+	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.BigBarrel, false, "carpentry_02_52", false, nil);
 	        isUsed = true;
 
 	    end
 
 	    if tileObject:getSprite():getName() == CarpentryAndConstructedPlaceholder.rain_collector_big_full then
 	    	
-	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.BigBarrel, false, "carpentry_02_52", true);
+	    	CarpentryAndConstructedPlaceholder.addBarrel(square, CarpentryAndConstructedPlaceholder.BigBarrel, false, "carpentry_02_52", true, "carpentry_02_53");
 	        isUsed = true;
 
 	    end
@@ -118,7 +118,7 @@ CarpentryAndConstructedPlaceholder.replace = function(square, tileObject)
 
 end
     
-CarpentryAndConstructedPlaceholder.addBarrel = function(square, barrel, isNorth, spriteToUse, isFull)
+CarpentryAndConstructedPlaceholder.addBarrel = function(square, barrel, isNorth, spriteToUse, isFull, spriteFull)
 
     if ISBuildMenu.cheat == true then
 	    barrel:create(square:getX(), square:getY(), square:getZ(), false, spriteToUse);
@@ -129,11 +129,20 @@ CarpentryAndConstructedPlaceholder.addBarrel = function(square, barrel, isNorth,
     end
 
 	if isFull == true then
+        
         for key,val in ipairs(RainCollectorBarrel.barrels) do
             if (val.x == square:getX()) and (val.y == square:getY()) and (val.z == square:getZ()) then
 				val.waterAmount = val.waterMax;
+				local obj = RainCollectorBarrel.findObject(square);
+				if obj then
+					obj:setWaterAmount(val.waterAmount);
+					obj:transmitModData();
+					obj:setSprite(spriteFull);
+					obj:transmitUpdatedSpriteToClients();
+				end
             end
         end
+
 	end
 
 end
