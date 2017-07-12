@@ -57,31 +57,31 @@ ZombiePlaceholder.match = function(tileObject)
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.zeroOrOneRandomZombie then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(0,1);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(0,2);
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.oneOrFiveRandomZombies then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(1,5);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(1,6);
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.fiveOrTenRandomZombies then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(5,10);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(5,11);
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.tenOrTwentyRandomZombies then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(10,20);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(10,21);
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.twentyOrFiftyRandomZombies then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(20,50);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(20,51);
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.fiftyOrHundredRandomZombies then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(50,100);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(50,101);
         end
 
         if tileObject:getSprite():getName() == ZombiePlaceholder.hundredOrTwoHundredRandomZombies then
-            ZombiePlaceholder.zombiesToSpawn = ZombRand(100,200);
+            ZombiePlaceholder.zombiesToSpawn = ZombRand(100,201);
         end
 
     end
