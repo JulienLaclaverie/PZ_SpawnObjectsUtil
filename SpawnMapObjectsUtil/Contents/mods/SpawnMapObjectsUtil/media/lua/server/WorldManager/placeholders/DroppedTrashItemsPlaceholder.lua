@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 DroppedTrashItemsPlaceholder = {
 
     newspaper_1 = "placeholder_items_trash_01_0",

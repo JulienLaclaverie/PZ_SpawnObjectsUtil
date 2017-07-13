@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 DroppedWeaponsItemsPlaceholder = {
 
     box_shotgun = "placeholder_items_weapons_01_0",

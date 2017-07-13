@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 DroppedFoodItemsPlaceholder = {
 
     alcohol_1 = "placeholder_items_food_01_0",
