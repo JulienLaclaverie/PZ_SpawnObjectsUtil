@@ -98,4 +98,4 @@ DroppedWeaponsItemsPlaceholder.replace = function(square, tileObject)
 end
 
 
-SpawnFromPlaceholder.Add({ name = "DroppedWeaponsItemsPlaceholder", indexModifier = -1 });
+SpawnFromPlaceholder.Add({ name = "DroppedWeaponsItemsPlaceholder" });

@@ -25,4 +25,4 @@ GeneretorPlaceholder.replace = function(square, tileObject)
 
 end
 
-SpawnFromPlaceholder.Add({ name = "GeneretorPlaceholder", indexModifier = -1 });
+SpawnFromPlaceholder.Add({ name = "GeneretorPlaceholder" });

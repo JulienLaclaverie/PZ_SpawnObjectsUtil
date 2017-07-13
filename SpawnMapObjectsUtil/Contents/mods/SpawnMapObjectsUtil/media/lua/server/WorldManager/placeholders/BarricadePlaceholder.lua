@@ -294,4 +294,4 @@ BarricadePlaceholder.placeBarricade = function(object, args)
 end
 
 
-SpawnFromPlaceholder.Add({ name = "BarricadePlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "BarricadePlaceholder" });
