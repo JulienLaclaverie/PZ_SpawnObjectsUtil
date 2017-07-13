@@ -45,4 +45,4 @@ TrapsPlaceholder.addFishTrap = function(square, spriteToUse, trapName)
 
 end
 
-SpawnFromPlaceholder.Add({ name = "TrapsPlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "TrapsPlaceholder" });

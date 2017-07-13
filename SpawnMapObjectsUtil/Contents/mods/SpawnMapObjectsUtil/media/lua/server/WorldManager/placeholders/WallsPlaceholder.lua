@@ -1056,7 +1056,7 @@ WallsPlaceholder.InitializeFence = function(sprite, level, isStake, isMetal, isB
 
 end
 
-SpawnFromPlaceholder.Add({ name = "WallsPlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "WallsPlaceholder" });
 
 -- Walls health used :
 -- Frame = 50 = 50

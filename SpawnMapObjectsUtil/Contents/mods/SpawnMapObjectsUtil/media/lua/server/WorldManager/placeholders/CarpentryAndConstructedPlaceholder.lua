@@ -151,4 +151,4 @@ CarpentryAndConstructedPlaceholder.addBarrel = function(square, barrel, isNorth,
 
 end
 
-SpawnFromPlaceholder.Add({ name = "CarpentryAndConstructedPlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "CarpentryAndConstructedPlaceholder" });

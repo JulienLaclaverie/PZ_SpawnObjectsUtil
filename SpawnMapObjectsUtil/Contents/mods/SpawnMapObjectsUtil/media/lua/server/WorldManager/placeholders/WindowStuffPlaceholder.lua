@@ -196,4 +196,4 @@ WindowStuffPlaceholder.replace = function(square, tileObject)
     return isUsed
 end
 
-SpawnFromPlaceholder.Add({ name = "WindowStuffPlaceholder", indexModifier = 0 });
+SpawnFromPlaceholder.Add({ name = "WindowStuffPlaceholder" });

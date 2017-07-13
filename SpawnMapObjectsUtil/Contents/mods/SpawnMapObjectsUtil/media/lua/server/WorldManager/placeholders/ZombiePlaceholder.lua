@@ -105,4 +105,4 @@ ZombiePlaceholder.replace = function(square, tileObject)
     return isUsed;
 end
 
-SpawnFromPlaceholder.Add({ name = "ZombiePlaceholder", indexModifier = -1 });
+SpawnFromPlaceholder.Add({ name = "ZombiePlaceholder" });
