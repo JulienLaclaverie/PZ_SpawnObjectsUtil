@@ -5,7 +5,6 @@ SpawnFromPlaceholder = {
 };
 
 SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
-
     for i=0,sq:getObjects():size()-1 do
         if sq:getObjects() then
             local tileObject = sq:getObjects():get(i);
@@ -41,4 +40,23 @@ SpawnFromPlaceholder.Add = function(placeholder)
     table.insert(SpawnFromPlaceholder.placeholders, placeholder);
 end
 
+SpawnFromPlaceholder.Remove = function(placeholdersToRemove)
+    SpawnFromPlaceholder.placeholdersToRemove = placeholdersToRemove;
+end
+
+local RemovePlaceholders = function()
+    if SpawnFromPlaceholder.placeholdersToRemove ~= nil then
+        print("[SpawnMapObjectsUtil-INFO] Removing some placeholder programmatically");
+        for key,name in ipairs(SpawnFromPlaceholder.placeholdersToRemove) do
+            for i,ph in ipairs(SpawnFromPlaceholder.placeholders) do
+                if ph.name ~= nil and ph.name == name then
+                    table.remove(SpawnFromPlaceholder.placeholders, i);
+                    break;
+                end
+            end
+        end
+    end
+end
+
 Events.LoadGridsquare.Add(SpawnFromPlaceholder.onGridsquareLoaded);
+Events.OnGameStart.Add(RemovePlaceholders);
