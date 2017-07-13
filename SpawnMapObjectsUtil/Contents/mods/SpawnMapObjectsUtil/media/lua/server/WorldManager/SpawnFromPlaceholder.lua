@@ -10,6 +10,7 @@ SpawnFromPlaceholder = {
 };
 
 SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
+    local tileToRemove = {};
     for i=0,sq:getObjects():size()-1 do
         if sq:getObjects() then
             local tileObject = sq:getObjects():get(i);
@@ -23,8 +24,7 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
                                 end
                                 local isOnlyRemoved = ph.fn.replace(sq, tileObject);
                                 if isOnlyRemoved == true then
-                                    SpawnFromPlaceholder.removePlaceholderFromSquare(sq, tileObject);
-                                    i = i + ph.indexModifier;
+                                    table.insert(tileToRemove, tileObject);
                                 end
                             end
                         end
@@ -32,6 +32,10 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
                 end
             end
         end
+    end
+
+    for key,tile in ipairs(tileToRemove) do
+        SpawnFromPlaceholder.removePlaceholderFromSquare(sq, tile);
     end
 
 end
