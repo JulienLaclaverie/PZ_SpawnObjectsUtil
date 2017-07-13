@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 GeneretorPlaceholder = {
 
     generator = "placeholder_generator_01_0",

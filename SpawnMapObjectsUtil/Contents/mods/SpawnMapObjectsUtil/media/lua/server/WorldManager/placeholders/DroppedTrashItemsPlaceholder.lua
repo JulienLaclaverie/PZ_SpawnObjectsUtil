@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 DroppedTrashItemsPlaceholder = {
 
     newspaper_1 = "placeholder_items_trash_01_0",
@@ -16,7 +21,7 @@ DroppedTrashItemsPlaceholder.replace = function(square, tileObject)
     local isUsed = false;
     if luautils.stringStarts(tileObject:getSprite():getName(), "placeholder_items_trash_01") then
 
-        local randomContent = ZombRand(0,100)+1;
+        local randomContent = ZombRand(0,101);
 
         if tileObject:getSprite():getName() == DroppedTrashItemsPlaceholder.newspaper_1 then
 

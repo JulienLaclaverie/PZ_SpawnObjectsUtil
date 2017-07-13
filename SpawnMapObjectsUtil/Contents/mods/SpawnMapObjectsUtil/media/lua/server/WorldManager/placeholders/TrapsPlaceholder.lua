@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 TrapsPlaceholder = {
 
     fishingNetNorth = "placeholder_constructedobjects_01_15",

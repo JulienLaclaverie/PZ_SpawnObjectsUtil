@@ -1,3 +1,7 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
 
 CarpentryAndConstructedPlaceholder = {    
 

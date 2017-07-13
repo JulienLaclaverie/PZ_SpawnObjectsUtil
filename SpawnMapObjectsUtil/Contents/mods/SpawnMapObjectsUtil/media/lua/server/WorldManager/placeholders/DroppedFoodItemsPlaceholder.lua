@@ -1,3 +1,8 @@
+----------------------------------------------------
+--               SpawnObjectsUtil                 --
+--          Created by Onkeen & Sylve007          --
+----------------------------------------------------
+
 DroppedFoodItemsPlaceholder = {
 
     alcohol_1 = "placeholder_items_food_01_0",
@@ -33,10 +38,10 @@ DroppedFoodItemsPlaceholder = {
 
 DroppedFoodItemsPlaceholder.replace = function(square, tileObject)
 
-    local randomContent = ZombRand(0,100)+1;
-    local randomValue_3_5 = ZombRand(3,5)+1;
-    local randomValue_1_3 = ZombRand(1,3)+1;
-    local randomValue_6_8 = ZombRand(6,8)+1;
+    local randomContent = ZombRand(0,101);
+    local randomValue_3_5 = ZombRand(3,6);
+    local randomValue_1_3 = ZombRand(1,4);
+    local randomValue_6_8 = ZombRand(6,9);
     local isUsed = false;
 
     -- Alcohol
