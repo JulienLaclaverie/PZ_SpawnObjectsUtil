@@ -163,11 +163,13 @@ WallsPlaceholder.replace = function(square, tileObject)
 
     local isUsed = false;
     local randomContent = ZombRand(0,100)+1;
+	local wall;
+	local sprite;
 
 	if getPlayer() == nil then
 		return false;
 	end
-	player = getPlayer():getPlayerNum();
+	local player = getPlayer():getPlayerNum();
 	WallsPlaceholder.InitializeWallTypes(player);
 
     ------------------
@@ -192,10 +194,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    ------------------
 
 	    -- Level 1 - Wooden Wall
-		sprite_wall = { sprite = "walls_exterior_wooden_01_44", northSprite = "walls_exterior_wooden_01_45", corner = nil };
-		sprite_corner = { sprite = "walls_exterior_wooden_01_46", northSprite = "walls_exterior_wooden_01_46", corner = true };
-		sprite_window_frame = { sprite = "walls_exterior_wooden_01_52", northSprite = "walls_exterior_wooden_01_53", corner = nil };
-		sprite_door_frame = { sprite = "walls_exterior_wooden_01_54", northSprite = "walls_exterior_wooden_01_55", corner = nil };
+		local sprite_wall = { sprite = "walls_exterior_wooden_01_44", northSprite = "walls_exterior_wooden_01_45", corner = nil };
+		local sprite_corner = { sprite = "walls_exterior_wooden_01_46", northSprite = "walls_exterior_wooden_01_46", corner = true };
+		local sprite_window_frame = { sprite = "walls_exterior_wooden_01_52", northSprite = "walls_exterior_wooden_01_53", corner = nil };
+		local sprite_door_frame = { sprite = "walls_exterior_wooden_01_54", northSprite = "walls_exterior_wooden_01_55", corner = nil };
 
 	    -- wooden_wall_west_1
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_west_1 then
@@ -263,10 +265,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    end
 
 	    -- Level 2 - Wooden Wall
-		sprite_wall = { sprite = "walls_exterior_wooden_01_40", northSprite = "walls_exterior_wooden_01_41", corner = nil };
-		sprite_corner = { sprite = "walls_exterior_wooden_01_42", northSprite = "walls_exterior_wooden_01_42", corner = true };
-		sprite_window_frame = { sprite = "walls_exterior_wooden_01_48", northSprite = "walls_exterior_wooden_01_49", corner = nil };
-		sprite_door_frame = { sprite = "walls_exterior_wooden_01_50", northSprite = "walls_exterior_wooden_01_51", corner = nil };
+		local sprite_wall = { sprite = "walls_exterior_wooden_01_40", northSprite = "walls_exterior_wooden_01_41", corner = nil };
+		local sprite_corner = { sprite = "walls_exterior_wooden_01_42", northSprite = "walls_exterior_wooden_01_42", corner = true };
+		local sprite_window_frame = { sprite = "walls_exterior_wooden_01_48", northSprite = "walls_exterior_wooden_01_49", corner = nil };
+		local sprite_door_frame = { sprite = "walls_exterior_wooden_01_50", northSprite = "walls_exterior_wooden_01_51", corner = nil };
 
 	    -- wooden_wall_west_2
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_west_2 then
@@ -334,10 +336,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    end
 
 	    -- Level 3 - Wooden Wall
-		sprite_wall = { sprite = "walls_exterior_wooden_01_24", northSprite = "walls_exterior_wooden_01_25", corner = nil };
-		sprite_corner = { sprite = "walls_exterior_wooden_01_26", northSprite = "walls_exterior_wooden_01_26", corner = true };
-		sprite_window_frame = { sprite = "walls_exterior_wooden_01_32", northSprite = "walls_exterior_wooden_01_33", corner = nil };
-		sprite_door_frame = { sprite = "walls_exterior_wooden_01_34", northSprite = "walls_exterior_wooden_01_35", corner = nil };
+		local sprite_wall = { sprite = "walls_exterior_wooden_01_24", northSprite = "walls_exterior_wooden_01_25", corner = nil };
+		local sprite_corner = { sprite = "walls_exterior_wooden_01_26", northSprite = "walls_exterior_wooden_01_26", corner = true };
+		local sprite_window_frame = { sprite = "walls_exterior_wooden_01_32", northSprite = "walls_exterior_wooden_01_33", corner = nil };
+		local sprite_door_frame = { sprite = "walls_exterior_wooden_01_34", northSprite = "walls_exterior_wooden_01_35", corner = nil };
 
 	    -- wooden_wall_west_3
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_wall_west_3 then
@@ -487,9 +489,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    -------------------
 
 	    -- Level 1 - Wooden fence
-		sprite_fence = { sprite = "carpentry_02_40", northSprite = "carpentry_02_41", corner = nil };
-		sprite_corner = { sprite = "carpentry_02_42", northSprite = "carpentry_02_42", corner = true };
-		sprite_stake = { sprite = "carpentry_02_43", northSprite = "carpentry_02_43", corner = nil };
+		local sprite_fence = { sprite = "carpentry_02_40", northSprite = "carpentry_02_41", corner = nil };
+		local sprite_corner = { sprite = "carpentry_02_42", northSprite = "carpentry_02_42", corner = true };
+		local sprite_stake = { sprite = "carpentry_02_43", northSprite = "carpentry_02_43", corner = nil };
+		local fence;
 
 	    -- wooden_fence_west_1
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_fence_west_1 then
@@ -659,10 +662,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    ------------------
 
 	    -- Level 1 - Metal Wall
-		sprite_wall = { sprite = "constructedobjects_01_64", northSprite = "constructedobjects_01_65", corner = nil };
-		sprite_corner = { sprite = "constructedobjects_01_66", northSprite = "constructedobjects_01_66", corner = true };
-		sprite_window_frame = { sprite = "constructedobjects_01_72", northSprite = "constructedobjects_01_73", corner = nil };
-		sprite_door_frame = { sprite = "constructedobjects_01_74", northSprite = "constructedobjects_01_75", corner = nil };
+		local sprite_wall = { sprite = "constructedobjects_01_64", northSprite = "constructedobjects_01_65", corner = nil };
+		local sprite_corner = { sprite = "constructedobjects_01_66", northSprite = "constructedobjects_01_66", corner = true };
+		local sprite_window_frame = { sprite = "constructedobjects_01_72", northSprite = "constructedobjects_01_73", corner = nil };
+		local sprite_door_frame = { sprite = "constructedobjects_01_74", northSprite = "constructedobjects_01_75", corner = nil };
 
 	    -- wooden_wall_west_1
 	    if tileObject:getSprite():getName() == WallsPlaceholder.metal_wall_west_1 then
@@ -805,9 +808,10 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    ------------------
 
 	    -- Metal fence
-		sprite_fence = { sprite = "constructedobjects_01_83", northSprite = "constructedobjects_01_80", corner = nil };
 		sprite_corner = { sprite = "constructedobjects_01_84", northSprite = "constructedobjects_01_84", corner = true };
-		sprite_stake = { sprite = "constructedobjects_01_85", northSprite = "constructedobjects_01_85", corner = nil };
+		local sprite_fence = { sprite = "constructedobjects_01_83", northSprite = "constructedobjects_01_80", corner = nil };
+		local sprite_stake = { sprite = "constructedobjects_01_85", northSprite = "constructedobjects_01_85", corner = nil };
+		local fence;
 
 	    -- metal_fence_west
 	    if tileObject:getSprite():getName() == WallsPlaceholder.metal_fence_west then
@@ -889,7 +893,7 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    -- High Metal Fences
 		sprite_wall = { sprite = "constructedobjects_01_78", northSprite = "constructedobjects_01_77", corner = nil };
 		sprite_corner = { sprite = "constructedobjects_01_79", northSprite = "constructedobjects_01_79", corner = true };
-		sprite_pillar = { sprite = "constructedobjects_01_76", northSprite = "constructedobjects_01_76", corner = nil };
+		local sprite_pillar = { sprite = "constructedobjects_01_76", northSprite = "constructedobjects_01_76", corner = nil };
 
 	    -- high_metal_fence_west
 	    if tileObject:getSprite():getName() == WallsPlaceholder.high_metal_fence_west then
@@ -934,7 +938,7 @@ end
 
 WallsPlaceholder.addwall = function(square, wall, isNorth, sprite)
 
-	spriteToUse = sprite.sprite;
+	local spriteToUse = sprite.sprite;
 	if isNorth == true then
 		spriteToUse = sprite.northSprite;
 	end
@@ -951,13 +955,13 @@ WallsPlaceholder.addwall = function(square, wall, isNorth, sprite)
     -- Post wall creation actions 
     square:RecalcAllWithNeighbours(true);
 	if isServer() then
-		javaObject:transmitCompleteItemToClients();
+		wall:transmitCompleteItemToClients();
 	end
 
 end
 
 WallsPlaceholder.InitializeWall = function(sprite, level, isWindowFrame, isDoorFrame, isMetal, player)
-
+	local wall = { modData = {} };
 	if (isMetal == false) then
 		if (isDoorFrame == true) then
 			wall = ISWoodenDoorFrame:new(sprite.sprite, sprite.northSprite, sprite.corner);
