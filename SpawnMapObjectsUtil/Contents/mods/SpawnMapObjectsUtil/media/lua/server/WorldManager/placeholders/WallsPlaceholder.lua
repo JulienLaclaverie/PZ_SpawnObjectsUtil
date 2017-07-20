@@ -230,8 +230,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_west_1 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, false, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -240,8 +240,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_north_1 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, false, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -301,8 +301,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_west_2 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, false, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -311,8 +311,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_north_2 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, false, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -372,8 +372,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_west_3 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 3, true, false, false, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -382,8 +382,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.wooden_window_frame_north_3 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 3, true, false, false, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -698,8 +698,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_west_1 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, true, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -708,8 +708,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_north_1 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 1, true, false, true, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -769,8 +769,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_west_2 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, true, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, false, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -779,8 +779,8 @@ WallsPlaceholder.replace = function(square, tileObject)
 	    if tileObject:getSprite():getName() == WallsPlaceholder.metal_window_frame_north_2 then
 
 	    	wall = WallsPlaceholder.InitializeWall(sprite_window_frame, 2, true, false, true, player);
-	    	wall = WallsPlaceholder.InitializeWindowFrame(square, wall);
 		    WallsPlaceholder.addwall(square, wall, true, sprite_window_frame);
+            WallsPlaceholder.ReorganizeLayers(square);
 	        isUsed = true;
 
 	    end
@@ -1021,13 +1021,23 @@ WallsPlaceholder.InitializeWall = function(sprite, level, isWindowFrame, isDoorF
 
 end
 
-WallsPlaceholder.InitializeWindowFrame = function(square, wall)
-	if BarricadePlaceholder.getBarricadeAble(square, {}) ~= nil then
-		wall.hoppable = false;
-	else
-		wall.hoppable = true;
+WallsPlaceholder.ReorganizeLayers = function(square)
+	local shiftItem;
+
+	for i=0, square:getObjects():size()-1 do
+		local object = square:getObjects():get(i);
+		if instanceof(object, 'BarricadeAble') then
+			shiftItem = object;
+			if isClient() then square:transmitRemoveItemFromSquare(object) end
+			square:RemoveTileObject(object);
+			break;
+		end
 	end
-	return wall;
+
+	if shiftItem then
+		square:AddSpecialObject( shiftItem, square:getObjects():size() );
+		if isClient() then shiftItem:transmitCompleteItemToServer(); end
+	end
 end
 
 WallsPlaceholder.InitializeFence = function(sprite, level, isStake, isMetal, isBars, player)
