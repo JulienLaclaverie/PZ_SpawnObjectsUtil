@@ -22,9 +22,9 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
                                 if ph.fn == nil then
                                     ph.fn = _G[ph.name];
                                 end
-                                local isOnlyRemoved = ph.fn.replace(sq, tileObject);
+                                local isOnlyRemoved = ph.fn.replace(sq, tileObject, i);
                                 if isOnlyRemoved == true then
-                                    table.insert(tileToRemove, tileObject);
+                                    SpawnFromPlaceholder.removePlaceholderFromSquare(sq, tileObject);
                                 end
                             end
                         end
@@ -32,10 +32,6 @@ SpawnFromPlaceholder.onGridsquareLoaded = function(sq)
                 end
             end
         end
-    end
-
-    for key,tile in ipairs(tileToRemove) do
-        SpawnFromPlaceholder.removePlaceholderFromSquare(sq, tile);
     end
 
 end
